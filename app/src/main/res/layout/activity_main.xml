@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?colorPrimary"
-        android:theme="@style/Theme.AppCompat.DayNight">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,7 +22,8 @@
             android:background="@drawable/toolbar_background"
             android:layout_margin="10dp"
             app:menu="@menu/search_menu"
-            android:elevation="10dp"
+            app:popupTheme="@style/PopupMenuStyle"
+            android:elevation="8dp"
             app:layout_collapseMode="pin"
             app:layout_scrollFlags="scroll|enterAlways"
             tools:targetApi="lollipop" />
@@ -35,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:navGraph="@navigation/navigation_graph" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
