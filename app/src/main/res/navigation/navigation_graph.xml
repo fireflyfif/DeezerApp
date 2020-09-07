@@ -9,6 +9,24 @@
         android:id="@+id/home_dest"
         android:name="dev.iotarho.deezerapp.ui.ArtistsFragment"
         android:label="Artists"
-        tools:layout="@layout/fragment_artists" />
+        tools:layout="@layout/fragment_artists" >
+
+        <action
+            android:id="@+id/next_action"
+            app:destination="@+id/flow_to_artist_album"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/flow_to_artist_album"
+        android:name="dev.iotarho.deezerapp.ui.AlbumsFragment"
+        android:label="Albums"
+        tools:layout="@layout/fragment_albums" >
+
+        <!--<action
+            android:id="@+id/next_action"
+            app:destination="@+id/flow_to_artist_album"
+            />-->
+    </fragment>
 
 </navigation>

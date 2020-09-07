@@ -9,16 +9,20 @@ import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.iotarho.deezerapp.R
+import dev.iotarho.deezerapp.models.ResultData
 import dev.iotarho.deezerapp.models.SearchResult
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class ArtistsFragment : Fragment() {
+class ArtistsFragment : Fragment(), OnResultClickListener {
 
     private lateinit var searchView: SearchView
     private lateinit var recyclerView: RecyclerView
@@ -45,6 +49,10 @@ class ArtistsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_artists, container, false)
         recyclerView = view.findViewById(R.id.list)
         val progressBar = view.findViewById<ProgressBar>(R.id.progressBar)
+        val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
+
+        (activity as AppCompatActivity?)?.setSupportActionBar(toolbar)
+        (activity as AppCompatActivity?)?.supportActionBar?.title = "Search artist"
 
         resultsViewModel.query.observe(viewLifecycleOwner) { query ->
             Log.d("ArtistFragment", "query is : $query")
@@ -68,11 +76,10 @@ class ArtistsFragment : Fragment() {
     }
 
     private fun setupResults(searchResult: SearchResult) {
-        Log.d("ArtistFragment", "search results is : $searchResult")
         // Set the adapter
         with(recyclerView) {
             layoutManager = LinearLayoutManager(context)
-            adapter = MyItemRecyclerViewAdapter(searchResult.data)
+            adapter = ArtistsAdapter(searchResult.data, this@ArtistsFragment)
         }
     }
 
@@ -96,15 +103,20 @@ class ArtistsFragment : Fragment() {
         }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
+            override fun onQueryTextSubmit(query: String): Boolean {
                 Log.d("ArtistFragment", "temp, search query is : $query")
-                query?.let { doSearch(searchView, it) }
+                doSearch(searchView, query)
                 return false
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
+            override fun onQueryTextChange(newText: String): Boolean {
                 Log.d("ArtistFragment", "temp, search newText is : $newText")
-                newText?.let { doSearch(searchView, it) }
+                if (newText.isNotEmpty()) {
+                    if (newText.length > 3) {
+                        resultsViewModel.setQuery(newText)
+                    }
+                }
+
                 return false
             }
         })
@@ -139,5 +151,9 @@ class ArtistsFragment : Fragment() {
                     putString(ARG_QUERY, query)
                 }
             }
+    }
+
+    override fun onResultClick(resultData: ResultData) {
+        findNavController().navigate(R.id.next_action)
     }
 }

@@ -2,7 +2,7 @@ package dev.iotarho.deezerapp.models
 
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+data class ResultData(
 
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -8,7 +8,7 @@
     </style>
 
     <style name="PopupMenuStyle" parent="ThemeOverlay.MaterialComponents">
-        <item name="android:background">?attr/colorAccent</item>
+        <item name="android:background">?attr/colorPrimary</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">?colorAccent</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">?colorAccent</item>
