@@ -15,9 +15,9 @@ class TrackViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val trackVolume: TextView = itemView.findViewById(R.id.trackVolume)
     private val divider: View = itemView.findViewById(R.id.divider)
 
-    fun render(track: TrackData) {
+    fun render(track: TrackData, showVolume: Boolean) {
 
-        if (track.trackPosition == 1) {
+        if (showVolume && track.trackPosition == 1) {
             trackVolume.text = itemView.context.getString(R.string.track_volume, track.diskNumber)
             trackVolume.visibility = View.VISIBLE
             divider.visibility = View.VISIBLE

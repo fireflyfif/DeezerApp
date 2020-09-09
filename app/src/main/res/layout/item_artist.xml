@@ -8,18 +8,18 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/artistCardView"
+        style="?toolbarStyle"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="12dp"
-        android:paddingBottom="6dp"
         android:paddingTop="6dp"
+        android:paddingBottom="6dp"
         app:cardBackgroundColor="@color/colorAccent"
         app:cardCornerRadius="60dp"
         app:cardElevation="0dp"
-        style="?toolbarStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -40,13 +40,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/artistCardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/artistCardView"
         app:layout_constraintTop_toTopOf="@id/artistCardView"
-        tools:text="Metallica" />
+        tools:text="Metallica"
+        tools:textColor="@color/colorYellow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -110,7 +110,6 @@ class AlbumTracksFragment : Fragment() {
             )
         )
 
-        //Set Gradient
         backgroundProtection.background = gradientDrawable
     }
 
@@ -124,11 +123,10 @@ class AlbumTracksFragment : Fragment() {
                 }
                 if (scrollRange + verticalOffset == 0) {
                     collapsingLayout.title = titleString
-//                    collapsingLayout.setCollapsedTitleTextColor(mGeneratedLightColor)
                     isShow = true
                 } else if (isShow) {
                     collapsingLayout.title =
-                        " " //careful there should a space between double quote otherwise it wont work
+                        " " // there should a space between double quote otherwise it wont work
                     isShow = false
                 }
             }

@@ -47,7 +47,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:textColor="@color/colorText"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@+id/artistName"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +59,7 @@
         android:id="@+id/trackName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ellipsize="end"
@@ -68,7 +68,7 @@
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/trackPosition"
+        app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/divider"
         tools:text="The Ecstasy Of Gold (Live)"
         tools:textColor="@color/colorYellow" />
@@ -80,8 +80,9 @@
         android:layout_marginTop="4dp"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:textColor="@color/colorText"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,5 +90,12 @@
         app:layout_constraintTop_toBottomOf="@+id/trackName"
         tools:text="Metallica"
         tools:textColor="@color/colorYellow" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="48dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,13 @@ class TracksAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val currentTrack = this.tracks[position]
         if (holder is TrackViewHolder) {
-            holder.render(currentTrack)
+            var showVolume = false
+            tracks.forEach { track ->
+                if (track.diskNumber > 1) {
+                    showVolume = true
+                }
+            }
+            holder.render(currentTrack, showVolume)
         }
     }
 

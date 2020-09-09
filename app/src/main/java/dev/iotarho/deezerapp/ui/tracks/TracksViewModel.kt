@@ -21,12 +21,11 @@ class TracksViewModel(private val deezerRepository: DeezerRepository) : ViewMode
         get() = tracksData
     private val tracksData = MutableLiveData<WrapperResult<TrackData>>()
 
-
-    fun getAlbumTracks(artistId: String) {
+    fun getAlbumTracks(albumId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 mutableLoading.postValue(true)
-                val results = deezerRepository.getAlbumTracks(artistId)
+                val results = deezerRepository.getAlbumTracks(albumId)
                 tracksData.postValue(results)
                 mutableLoading.postValue(false)
             } catch (ex: Exception) {
