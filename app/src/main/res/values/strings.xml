@@ -4,4 +4,5 @@
     <string name="search_hint">Search songs and artists</string>
     <string name="detail_image_description">Album cover</string>
     <string name="track_volume">Volume %1$d</string>
+    <string name="search_title">Search</string>
 </resources>

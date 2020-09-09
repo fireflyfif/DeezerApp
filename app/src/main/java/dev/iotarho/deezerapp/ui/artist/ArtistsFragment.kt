@@ -5,7 +5,6 @@ import android.content.Context
 import android.os.Bundle
 import android.os.IBinder
 import android.text.InputType
-import android.util.Log
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.ProgressBar
@@ -34,12 +33,6 @@ class ArtistsFragment : Fragment(), OnResultClickListener {
         super.onCreate(savedInstanceState)
 
         setHasOptionsMenu(true)
-
-        arguments?.let {
-            queryString = it.getString(ARG_QUERY)
-            Log.d("ArtistFragment", "ACTION_SEARCH, query is : $queryString")
-            queryString?.let { query -> resultsViewModel.setQuery(query) }
-        }
     }
 
     override fun onCreateView(
@@ -52,7 +45,7 @@ class ArtistsFragment : Fragment(), OnResultClickListener {
         val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
 
         (activity as AppCompatActivity?)?.setSupportActionBar(toolbar)
-        (activity as AppCompatActivity?)?.supportActionBar?.title = "Search artist"
+        (activity as AppCompatActivity?)?.supportActionBar?.title = getString(R.string.search_title)
 
         resultsViewModel.query.observe(viewLifecycleOwner) { query ->
             queryString = query
@@ -66,10 +59,7 @@ class ArtistsFragment : Fragment(), OnResultClickListener {
             setupResults(it)
         }
 
-        if (queryString == null) {
-            queryString = "Metallica"
-        }
-        resultsViewModel.setQuery(queryString!!)
+        queryString?.let { resultsViewModel.setQuery(it) }
 
         return view
     }
@@ -138,20 +128,7 @@ class ArtistsFragment : Fragment(), OnResultClickListener {
         imm?.hideSoftInputFromWindow(windowToken, 0)
     }
 
-    companion object {
-
-        const val ARG_QUERY = "arg_query"
-
-        fun newInstance(query: String) =
-            ArtistsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_QUERY, query)
-                }
-            }
-    }
-
     override fun onResultClick(result: ResultData) {
-//        findNavController().navigate(R.id.next_action)
         startActivity(
             AlbumActivity.newInstance(
                 requireContext(),

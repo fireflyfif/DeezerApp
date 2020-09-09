@@ -26,7 +26,7 @@ class ResultViewHolder(itemView: View, clickHandler: OnResultClickListener) :
         this.result = result
         artistName.text = result.name
         Picasso.get()
-            .load(result.pictureSmall)
+            .load(result.pictureMedium)
             .error(R.drawable.ic_launcher_foreground)
             .into(artistImage)
     }

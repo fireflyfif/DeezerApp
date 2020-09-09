@@ -1,5 +1,8 @@
 package dev.iotarho.deezerapp.ui.tracks
 
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
@@ -82,10 +86,32 @@ class AlbumTracksFragment : Fragment() {
         Picasso.get()
             .load(albumUrl)
             .into(albumImage)
-//        collapsingLayout.title = albumName
+
         albumName?.let { setCollapsingToolbar(it) }
         artistNameTextView.text = artistName
         albumNameTextView.text = albumName
+
+        setBackground(albumImage)
+    }
+
+    private fun setBackground(albumImage: ImageView) {
+
+        // Get the image as a bitmap
+        val bitmap = (albumImage.drawable as BitmapDrawable).bitmap
+        // Get a color from the bitmap by using the Palette library
+        val palette = Palette.from(bitmap).generate()
+        val generatedLightColor = palette.getMutedColor(lightMutedColor.toInt())
+
+        val gradientDrawable = GradientDrawable(
+            GradientDrawable.Orientation.TOP_BOTTOM,
+            intArrayOf(
+                generatedLightColor,
+                Color.parseColor("#00FFFFFF")
+            )
+        )
+
+        //Set Gradient
+        backgroundProtection.background = gradientDrawable
     }
 
     private fun setCollapsingToolbar(titleString: String) {
@@ -101,7 +127,8 @@ class AlbumTracksFragment : Fragment() {
 //                    collapsingLayout.setCollapsedTitleTextColor(mGeneratedLightColor)
                     isShow = true
                 } else if (isShow) {
-                    collapsingLayout.title = " " //careful there should a space between double quote otherwise it wont work
+                    collapsingLayout.title =
+                        " " //careful there should a space between double quote otherwise it wont work
                     isShow = false
                 }
             }
@@ -114,6 +141,7 @@ class AlbumTracksFragment : Fragment() {
         private const val ARG_ARTIST_NAME = "artist_name"
         private const val ARG_ALBUM_NAME = "album_name"
         private const val ARG_ALBUM_IMAGE = "album_image"
+        private const val lightMutedColor = 0xFFAAAAAA
 
         fun newInstance(albumId: String, artistName: String, albumName: String, albumUrl: String) =
             AlbumTracksFragment().apply {

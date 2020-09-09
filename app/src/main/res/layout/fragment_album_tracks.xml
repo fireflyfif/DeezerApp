@@ -33,6 +33,7 @@
                 android:fitsSystemWindows="true">
 
                 <View
+                    android:id="@+id/backgroundProtection"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/photo_background_protection"
@@ -44,11 +45,11 @@
 
                 <ImageView
                     android:id="@+id/albumImage"
-                    android:layout_width="match_parent"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="48dp"
+                    android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="48dp"
+                    android:layout_marginEnd="24dp"
                     android:layout_marginBottom="16dp"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/detail_image_description"
@@ -70,6 +71,7 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="22sp"
                     android:textStyle="bold"
+                    android:maxLines="1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/albumImage"
@@ -82,11 +84,13 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:textColor="@color/colorAccent"
+                    android:layout_marginBottom="16dp"
+                    android:textColor="@color/colorText"
                     android:textSize="16sp"
                     android:textStyle="normal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/albumName"
                     tools:text="Metallica" />
 
@@ -111,36 +115,6 @@
         android:fitsSystemWindows="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <!--<TextView
-            android:id="@+id/albumName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="@string/app_name"
-            android:textColor="@color/colorAccent"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />-->
-
-        <!-- <TextView
-             android:id="@+id/artistName"
-             android:layout_width="0dp"
-             android:layout_height="wrap_content"
-             android:layout_marginStart="16dp"
-             android:layout_marginTop="8dp"
-             android:layout_marginEnd="16dp"
-             tools:text="Metallica"
-             android:textColor="@color/colorAccent"
-             android:textSize="16sp"
-             android:textStyle="normal"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toBottomOf="@+id/albumName" />-->
-
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
@@ -156,9 +130,9 @@
             android:name="dev.iotarho.deezerapp.ui.tracks.AlbumTracksFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="0dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

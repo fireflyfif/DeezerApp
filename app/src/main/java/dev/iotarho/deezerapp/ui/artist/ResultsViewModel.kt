@@ -5,13 +5,14 @@ import androidx.lifecycle.*
 import dev.iotarho.deezerapp.api.DeezerRepository
 import dev.iotarho.deezerapp.models.ResultData
 import dev.iotarho.deezerapp.models.WrapperResult
+import dev.iotarho.deezerapp.utils.Utils
 import java.util.*
 
 class ResultsViewModel(private val deezerRepository: DeezerRepository) : ViewModel() {
 
     val query: LiveData<String>
         get() = queryMutableData
-    private val queryMutableData = MutableLiveData<String>()
+    private val queryMutableData = MutableLiveData(Utils.randomSearch())
 
     val loading: LiveData<Boolean>
         get() = mutableLoading
@@ -30,19 +31,17 @@ class ResultsViewModel(private val deezerRepository: DeezerRepository) : ViewMod
                 emit(deezerRepository.getArtists(query))
                 mutableLoading.value = false
             } catch (ex: Exception) {
-                Log.e("ResultsViewModel", "results is null")
+                Log.e("ResultsViewModel", "results are null")
                 mutableLoading.value = false
             }
         }
     }
-
 
     fun setQuery(originalInput: String) {
         val input = originalInput.toLowerCase(Locale.getDefault()).trim()
         if (input == queryMutableData.value) {
             return
         }
-        Log.d("ResultsViewModel", "originalInput is : $originalInput")
         queryMutableData.value = input
     }
 }
