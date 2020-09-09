@@ -10,11 +10,11 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            style="?toolbarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -24,6 +24,7 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:menu="@menu/search_menu"
             app:popupTheme="@style/PopupMenuStyle"
+            app:theme="@style/Toolbar"
             app:titleTextColor="@color/colorPrimary"
             tools:targetApi="lollipop" />
 
@@ -32,8 +33,23 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimaryDark"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:id="@+id/artistLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Artists"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -48,12 +64,17 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list"
             android:name="dev.iotarho.deezerapp.ArtistsFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
             app:layoutManager="LinearLayoutManager"
-            tools:context=".ui.ArtistsFragment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/artistLabel"
+            tools:context=".ui.artist.ArtistsFragment"
             tools:listitem="@layout/item_artist" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

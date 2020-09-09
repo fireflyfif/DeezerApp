@@ -7,19 +7,22 @@
 
     <fragment
         android:id="@+id/home_dest"
-        android:name="dev.iotarho.deezerapp.ui.ArtistsFragment"
+        android:name="dev.iotarho.deezerapp.ui.artist.ArtistsFragment"
         android:label="Artists"
         tools:layout="@layout/fragment_artists" >
 
         <action
             android:id="@+id/next_action"
-            app:destination="@+id/flow_to_artist_album"
-            />
+            app:destination="@+id/flow_to_artist_album" />
+
+        <argument
+            android:name="query"
+            app:argType="string" />
     </fragment>
 
     <fragment
         android:id="@+id/flow_to_artist_album"
-        android:name="dev.iotarho.deezerapp.ui.AlbumsFragment"
+        android:name="dev.iotarho.deezerapp.ui.album.AlbumsFragment"
         android:label="Albums"
         tools:layout="@layout/fragment_albums" >
 

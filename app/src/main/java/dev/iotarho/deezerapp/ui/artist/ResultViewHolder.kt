@@ -1,4 +1,4 @@
-package dev.iotarho.deezerapp.ui
+package dev.iotarho.deezerapp.ui.artist
 
 import android.view.View
 import android.widget.ImageView
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import dev.iotarho.deezerapp.R
 import dev.iotarho.deezerapp.models.ResultData
+import dev.iotarho.deezerapp.ui.artist.OnResultClickListener
 
 class ResultViewHolder(itemView: View, clickHandler: OnResultClickListener) :
     RecyclerView.ViewHolder(itemView), View.OnClickListener {
@@ -15,6 +16,11 @@ class ResultViewHolder(itemView: View, clickHandler: OnResultClickListener) :
     private lateinit var result: ResultData
     private val artistName: TextView = itemView.findViewById(R.id.artistName)
     private val artistImage: ImageView = itemView.findViewById(R.id.artistImage)
+
+    init {
+        itemView.setOnClickListener(this)
+        this.clickHandler = clickHandler
+    }
 
     fun render(result: ResultData) {
         this.result = result
@@ -27,10 +33,5 @@ class ResultViewHolder(itemView: View, clickHandler: OnResultClickListener) :
 
     override fun onClick(v: View) {
         clickHandler.onResultClick(result)
-    }
-
-    init {
-        itemView.setOnClickListener(this)
-        this.clickHandler = clickHandler
     }
 }

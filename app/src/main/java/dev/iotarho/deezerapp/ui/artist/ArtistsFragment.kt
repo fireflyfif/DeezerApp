@@ -1,4 +1,4 @@
-package dev.iotarho.deezerapp.ui
+package dev.iotarho.deezerapp.ui.artist
 
 import android.app.SearchManager
 import android.content.Context
@@ -13,12 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.iotarho.deezerapp.R
 import dev.iotarho.deezerapp.models.ResultData
-import dev.iotarho.deezerapp.models.SearchResult
+import dev.iotarho.deezerapp.models.WrapperResult
+import dev.iotarho.deezerapp.ui.album.AlbumActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -55,7 +55,6 @@ class ArtistsFragment : Fragment(), OnResultClickListener {
         (activity as AppCompatActivity?)?.supportActionBar?.title = "Search artist"
 
         resultsViewModel.query.observe(viewLifecycleOwner) { query ->
-            Log.d("ArtistFragment", "query is : $query")
             queryString = query
         }
 
@@ -63,23 +62,23 @@ class ArtistsFragment : Fragment(), OnResultClickListener {
             progressBar.visibility = if (it) View.VISIBLE else View.INVISIBLE
         }
 
-        resultsViewModel.results.observe(viewLifecycleOwner) {
+        resultsViewModel.artistResults.observe(viewLifecycleOwner) {
             setupResults(it)
         }
 
         if (queryString == null) {
-            queryString = "Eminem"
+            queryString = "Metallica"
         }
         resultsViewModel.setQuery(queryString!!)
 
         return view
     }
 
-    private fun setupResults(searchResult: SearchResult) {
+    private fun setupResults(wrapperResult: WrapperResult<ResultData>) {
         // Set the adapter
         with(recyclerView) {
             layoutManager = LinearLayoutManager(context)
-            adapter = ArtistsAdapter(searchResult.data, this@ArtistsFragment)
+            adapter = ArtistsAdapter(wrapperResult.data, this@ArtistsFragment)
         }
     }
 
@@ -104,13 +103,11 @@ class ArtistsFragment : Fragment(), OnResultClickListener {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                Log.d("ArtistFragment", "temp, search query is : $query")
                 doSearch(searchView, query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                Log.d("ArtistFragment", "temp, search newText is : $newText")
                 if (newText.isNotEmpty()) {
                     if (newText.length > 3) {
                         resultsViewModel.setQuery(newText)
@@ -153,7 +150,14 @@ class ArtistsFragment : Fragment(), OnResultClickListener {
             }
     }
 
-    override fun onResultClick(resultData: ResultData) {
-        findNavController().navigate(R.id.next_action)
+    override fun onResultClick(result: ResultData) {
+//        findNavController().navigate(R.id.next_action)
+        startActivity(
+            AlbumActivity.newInstance(
+                requireContext(),
+                result.id.toString(),
+                result.name
+            )
+        )
     }
 }

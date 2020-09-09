@@ -2,7 +2,6 @@ package dev.iotarho.deezerapp.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.fragment.NavHostFragment
 import dev.iotarho.deezerapp.R
 

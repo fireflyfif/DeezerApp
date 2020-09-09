@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">DeezerApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="search_hint">Search songs and artists</string>
+    <string name="detail_image_description">Album cover</string>
+    <string name="track_volume">Volume %1$d</string>
 </resources>

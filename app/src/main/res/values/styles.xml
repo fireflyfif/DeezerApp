@@ -5,13 +5,22 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">?colorPrimary</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
     </style>
 
     <style name="PopupMenuStyle" parent="ThemeOverlay.MaterialComponents">
-        <item name="android:background">?attr/colorPrimary</item>
-        <item name="android:navigationBarColor" tools:targetApi="lollipop">?colorAccent</item>
-        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
-        <item name="android:navigationBarDividerColor" tools:targetApi="o_mr1">?colorAccent</item>
+        <item name="android:background">?attr/colorAccent</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+    </style>
+
+
+    <style name="Toolbar" parent="ThemeOverlay.MaterialComponents.Light">
+        <!--This line changes the color of text in Toolbar-->
+        <item name="android:textColorPrimary">@color/colorPrimaryDark</item>
+        <!--This line changes the color of icons in toolbar (back, overflow menu icons)-->
+        <item name="android:textColorSecondary">@color/colorPrimaryDark</item>
     </style>
 
 </resources>

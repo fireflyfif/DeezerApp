@@ -3,23 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/albumImage"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginStart="0dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="12dp"
-        android:paddingTop="6dp"
-        android:paddingBottom="6dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorPrimaryDark" />
+        app:srcCompat="@color/colorYellow" />
 
     <TextView
         android:id="@+id/albumName"
@@ -27,30 +26,31 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/albumImage"
         app:layout_constraintStart_toStartOf="@+id/albumImage"
         app:layout_constraintTop_toBottomOf="@+id/albumImage"
-        tools:text="Metallica" />
+        tools:text="Hardwired…To Self-Destruct (Deluxe)"
+        tools:textColor="@color/colorYellow" />
 
     <TextView
-        android:id="@+id/arrtistName"
+        android:id="@+id/artistName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"
         android:textColor="@color/colorText"
-        android:textSize="16sp"
-        android:textStyle="normal"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/albumName"
         app:layout_constraintStart_toStartOf="@+id/albumName"
         app:layout_constraintTop_toBottomOf="@+id/albumName"
-        tools:text="Metallica" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:text="Metallica"
+        tools:textColor="@color/colorYellow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

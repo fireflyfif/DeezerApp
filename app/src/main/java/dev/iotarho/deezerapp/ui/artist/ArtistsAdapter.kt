@@ -1,4 +1,4 @@
-package dev.iotarho.deezerapp.ui
+package dev.iotarho.deezerapp.ui.artist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -27,18 +27,8 @@ class ArtistsAdapter(
 
     override fun getItemCount(): Int = values.size
 
-//    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
-//        val artistName: TextView = view.findViewById(R.id.artistName)
-//        val artistImage: ImageView = view.findViewById(R.id.artistImage)
-//
-//        override fun onClick(v: View?) {
-//            v?.setOnClickListener {
-//                onResultClickListener.onResultClick(values[position])
-//            }
-//        }
-//    }
 }
 
 interface OnResultClickListener {
-    fun onResultClick(resultData: ResultData)
+    fun onResultClick(result: ResultData)
 }
