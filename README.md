@@ -15,9 +15,9 @@ The app is written in Kotlin and uses the MVVM architecture pattern, which allow
 Repository module handles data operations. It abstracts the data sources from the rest of the app and provides a clean API so that the rest of the app can retrieve this data easily. The Repository currently holds only the data source from the web service, but later we could add to it different data sources, such as persistent models, and caches, such as persistent models, and caches.
 
 ## Libraries
-- [Retrofit](https://github.com/square/retrofit) & [OkHttp](https://github.com/square/okhttp) - for network calls
-- [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html) - for executing asynchronously 
-- [Picasso](https://github.com/square/picasso) - for displaying images
+- [Retrofit](https://github.com/square/retrofit) & [OkHttp](https://github.com/square/okhttp)
+- [Kotlin Coroutines](https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html)
+- [Picasso](https://github.com/square/picasso) 
 - [Architecture Components](https://developer.android.com/topic/libraries/architecture/) - ViewModel, LiveData, Navigation Component (partially)
-- [Koin](https://insert-koin.io/) - A lightweight dependency injection framework for Kotlin
-- [Palette](https://developer.android.com/training/material/palette-colors) - Selecting colors from the images
+- [Koin](https://insert-koin.io/) 
+- [Palette](https://developer.android.com/training/material/palette-colors) 
