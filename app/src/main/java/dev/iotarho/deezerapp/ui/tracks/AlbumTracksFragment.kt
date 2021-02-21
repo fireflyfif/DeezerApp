@@ -61,7 +61,7 @@ class AlbumTracksFragment : Fragment() {
         albumNameTextView = view.findViewById(R.id.albumName)
         tracksList = view.findViewById(R.id.trackList)
         albumImage = view.findViewById(R.id.albumImage)
-        collapsingLayout= view.findViewById(R.id.collapsingToolbar)
+        collapsingLayout = view.findViewById(R.id.collapsingToolbar)
 
         (activity as AppCompatActivity?)?.setSupportActionBar(toolbar)
         (activity as AppCompatActivity?)?.supportActionBar?.setDisplayHomeAsUpEnabled(true)
